@@ -12,7 +12,7 @@ LEFT JOIN
 WHERE s.datetime BETWEEN <<Begin Date|date>> AND <<End Date|date>>
     AND s.itemnumber IS NOT NULL 
     AND s.type IN ('issue','renew') 
-    AND i.homebranch IN ('TILLMAIN', 'TILLBAY', 'TILLGAR', 'TILLROCK', 'TILLMANZ', 'TILLPAC', 'TILLBKM', 'TILLOUT')
+    AND i.homebranch LIKE 'TILL%'
 GROUP BY 
     b.biblionumber
 ORDER BY 
