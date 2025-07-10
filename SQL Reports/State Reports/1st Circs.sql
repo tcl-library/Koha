@@ -1,5 +1,5 @@
 SELECT
-    borrowers.branchcode AS home_library,
+    COALESCE(items.homebranch, deleteditems.homebranch) AS item_homebranch,
     CASE
         WHEN statistics.location IN ('BOARDBOOK','EASYNONFIC','EASYREADER','JAV','JFICTION','JGRAPHIC',
                                      'JUVHOLIDAY','JUVMAG','JUVMANGA','JUVMUSIC','JNONFIC','JNONFICAV',
@@ -10,15 +10,16 @@ SELECT
     COUNT(*) AS checkouts
 FROM
     statistics
-    JOIN borrowers ON statistics.borrowernumber = borrowers.borrowernumber
+    LEFT JOIN items ON statistics.itemnumber = items.itemnumber
+    LEFT JOIN deleteditems ON statistics.itemnumber = deleteditems.itemnumber
 WHERE
-    statistics.type = 'issues'
-    AND borrowers.branchcode LIKE 'TILL%'
+    statistics.type = 'issue'
+    AND COALESCE(items.homebranch, deleteditems.homebranch) LIKE 'TILL%'
     AND statistics.datetime >= '2024-07-01'
     AND statistics.datetime < '2025-07-01'
 GROUP BY
-    borrowers.branchcode,
+    item_homebranch,
     age_category
 ORDER BY
-    borrowers.branchcode,
+    item_homebranch,
     age_category
