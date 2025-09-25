@@ -1,0 +1,40 @@
+[% USE date %]
+[% USE KohaDates %]
+[% manip=date.manip %]
+
+<h2>Library item(s) due today</h2>
+
+<p>The following item(s) are due back to the library today [% date.format(date.now, "%m-%d-%Y") %]:</p>
+
+<br />
+<br />
+<ul style="list-style-position: inside;">
+  [% FOREACH checkout IN checkouts %]
+    <div style="border: 2px solid; padding: 10px;">
+      <li><strong>Title:</strong> [% checkout.title %]</li>
+      <li><strong>Author:</strong>[% checkout.author %]</li>
+      <li><strong>Due date:</strong> [% checkout.date_due | $KohaDates %]</li>  
+    </div>
+  [% END %]
+</ul>
+
+<br />
+
+<p>If you have already returned these items, please disregard this notice.  
+To renew online, go to <a href="https://www.tillabook.org">www.tillabook.org</a> and log into your account.  
+If you need assistance, please contact your local library.</p>
+
+<p>Thank you,</p>
+<p>This message was sent by:</p>
+<address>
+    [% branch.branchname %]<br /> 
+    [% branch.branchaddress1 %]<br /> 
+    [% branch.branchcity %], [% branch.branchstate %] [% branch.branchzip %]
+</address>
+
+<p>You can access your account on-line at <a href="https://catalog.tillabook.org">https://catalog.tillabook.org</a> 24 hours a day.</p>
+<p>Visit our library's website at: <a href="[% branch.branchurl %]">[% branch.branchurl %]</a></p>
+<p>If you have any questions, please contact us by phone at <strong><a href="tel:[% branch.branchphone %]">[% branch.branchphone %]</a></strong>.</p>
+<p>Member of the Chinook Library Network</p>
+<br />
+<h6>This notice was generated on [% date.format(date.now, "%m/%d/%Y at %I:%M %p") %]</h6>
