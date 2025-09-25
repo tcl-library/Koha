@@ -4,7 +4,7 @@
 
 <h2>Library item(s) due today</h2>
 
-<p>The following item(s) are due back to the library today [% date.format(date.now, "%m-%d-%Y") %]:</p>
+<p>The following item is due back to the library today [% date.format(date.now, "%m-%d-%Y") %]:</p>
 
 <br />
 <br />
@@ -19,7 +19,7 @@
   
 <br />
 
-<p>If you have already returned these items, please disregard this notice.  
+<p>If you have already returned this item, please disregard this notice.  
 To renew online, go to <a href="https://www.tillabook.org">www.tillabook.org</a> and log into your account.  
 If you need assistance, please contact your local library.</p>
 
