@@ -1,24 +1,23 @@
 [% USE date %]
 [% USE KohaDates %]
-[% manip=date.manip %]
 
-<h2>Requested library items available for pick up</h2>
+<h2>Requested Library Items Available for Pickup</h2>
 
-<p>The following requested items are available to pickup at the library as of [% date.format(date.now, "%m-%d-%Y") %]</p>
+<p>The following requested items are available to pickup at the library as of [% date.now | $KohaDates %].</p>
 
 <br />
 
 <p>The details are:</p>
 
-<ul style="list-style-position: inside;">
+<ul style="list-style-position: inside; padding-left: 0;">
 ----
-  <div style="border: 2px solid; padding: 10px;">
-    <li style="display: none">[% hold.reserve_id %]</li>
-    <li><b>Waiting at: [% hold.branch.branchname %]</b></li>
-    <ul>
-      <li>Title: [% hold.biblio.title %]</li>
-      <li>Author: [% hold.biblio.author %]</li>
-      <li>Item will be held until: [% hold.expirationdate %]</li>
+  <div style="border: 2px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+    <div style="display: none">[% hold.reserve_id %]</div>
+    <p style="margin: 0 0 10px 0;"><b>Waiting at: [% hold.branch.branchname %]</b></p>
+    <ul style="margin: 0;">
+      <li><strong>Title:</strong> [% hold.biblio.title %]</li>
+      <li><strong>Author:</strong> [% hold.biblio.author %]</li>
+      <li><strong>Item will be held until:</strong> [% hold.expirationdate | $KohaDates %]</li>
     </ul>
   </div>
 ----
@@ -27,14 +26,14 @@
 <p>Thank you,</p>
 
 <address>
-  [% branch.branchname %]<br /> 
-  [% branch.branchaddress1 %]<br /> 
-  [% branch.branchcity %], [% branch.branchstate %] [% branch.branchzip %]
+  [% hold.branch.branchname %]<br /> 
+  [% hold.branch.branchaddress1 %]<br /> 
+  [% hold.branch.branchcity %], [% hold.branch.branchstate %] [% hold.branch.branchzip %]
 </address>
 
 <p>You can access your account on-line at <a href="https://catalog.tillabook.org">https://catalog.tillabook.org</a> 24 hours a day.</p>
 <p>Visit our library's website at: <a href="[% branch.branchurl %]">[% branch.branchurl %]</a></p>
-<p>If you have any questions, please contact us by phone at <strong><a href="tel:[% branch.branchphone %]">[% branch.branchphone %]</a></strong></p>
+<p>If you have any questions, please contact us by phone at <strong><a href="tel:[% hold.branch.branchphone %]">[% hold.branch.branchphone %]</a></strong></p>
 <p>Member of the Chinook Library Network</p>
 <br />
-<b>This notice was generated on [% date.format(date.now, "%m/%d/%Y at %I:%M %p") %]</b>
+<b>This notice was generated on [% date.now | $KohaDates(with_time => 1) %]</b>
