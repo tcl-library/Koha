@@ -1,0 +1,38 @@
+[% USE date %]
+[% USE KohaDates %]
+[% manip=date.manip %]
+
+<h2>Aviso de artículos vencidos - 7 días de retraso</h2>
+
+<p>Nuestros registros muestran que tiene artículos vencidos desde hace 7 días.  
+Su biblioteca no cobra multas por retraso, pero le pedimos que devuelva o renueve los artículos lo antes posible.</p>
+
+<p>Los siguientes artículos están vencidos:</p>
+
+[% FOREACH c IN overdues %]
+  <div style="border: 2px solid; padding: 10px; margin-bottom: 15px;">
+    <ul style="list-style-position: inside; margin: 0; padding-left: 15px;">
+      <li><strong>Title:</strong> [% c.item.biblio.title %] [% c.item.biblio.subtitle %]</li>
+      <li><strong>Author:</strong> [% c.item.biblio.author %]</li>
+      <li><strong>Due date:</strong> [% c.item.checkout.date_due | $KohaDates %]</li>
+    </ul>
+  </div>
+[% END %]
+
+<p>Puede intentar renovar sus artículos en línea en  
+<a href="https://catalog.tillabook.org">https://catalog.tillabook.org</a>, si las renovaciones están disponibles.</p>
+
+<p>Si cree que recibió este aviso por error, comuníquese con su biblioteca local para ayudarnos a corregir el problema.</p>
+
+<p>Gracias por su atención a este asunto.</p>
+
+<p>Personal de la biblioteca<br />
+[% branch.branchname %]<br />
+Teléfono: <strong><ins>[% branch.branchphone %]</ins></strong><br />
+Correo electrónico: [% branch.branchemail %]<br />
+Sitio web: <a href="[% branch.branchurl %]">[% branch.branchurl %]</a></p>
+
+<p>Miembro de la Red de Bibliotecas Chinook</p>
+<br />
+<h6>Este aviso fue generado el [% date.format(date.now, "%d/%m/%Y a las %I:%M %p") %]</h6>
+

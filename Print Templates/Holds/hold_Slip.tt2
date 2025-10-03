@@ -1,0 +1,76 @@
+[% USE KohaDates %]
+[% USE Branches %]
+
+<!--  If holding location does not equal logged in location, then print transfer slip -->
+
+[% IF hold.found != 'W' %]
+<p>Deliver To: <br>
+<span style="font-size:30px; font-weight:bold;"> <<branches.branchname>> </span></p>
+</br>
+</br>
+  
+<p style="font-size:15px;">Time: <<today>><br>
+    Call Number: <<items.itemcallnumber>> <br>
+    Barcode: <<items.barcode>> </p>
+    
+    <p style="font-size:15px;">Title: <<biblio.title>><<biblio.mid>><br>
+    <<biblio.author>></p>
+
+<br>
+<br>
+<br>
+
+    <p style="text-align:center">
+      Check in item at hold pickup location<br>
+      to activate hold<br>
+    </p>
+
+<!--  If holding location does equal logged in location, then Hold slip (not used) -->
+
+[% ELSIF hold.found == 'W' && borrower.smsalertnumber || borrower.email %]
+
+<p style="font-size:30px; font-weight:bold;"><<borrowers.surname>><br>
+    <<borrowers.firstname>></p>
+    <br>
+    
+    <p style="font-size:15px;">Pull Date:<br>
+    <span style="font-size:30px; font-weight:bold;"><<reserves.expirationdate>></span></p>
+    <br>
+    <br>
+    
+    <p style="font-size:15px;">Title: <br> 
+    <<biblio.title>><<biblio.medium>><br>
+    <<biblio.subtitle>>/<<biblio.author>></p>
+    
+    <p style="font-size:20px;">Item # <<items.barcode>></p>
+    
+    
+    <p style="text-align:center">
+      Hold Slip
+    </p>
+
+<!--  If holding location does equal logged in location, then Hold slip -->
+
+[% ELSE %]
+
+<p style="font-size:30px; font-weight:bold;"><<borrowers.surname>><br>
+    <<borrowers.firstname>></p>
+    <br>
+    
+    <p style="font-size:15px;">Pull Date:<br>
+    <span style="font-size:30px; font-weight:bold;"><<reserves.expirationdate>></span></p>
+    <br>
+    <br>
+    
+    <p style="font-size:15px;">Title: <br> 
+    <<biblio.title>><<biblio.medium>><br>
+    <<biblio.subtitle>>/<<biblio.author>></p>
+    
+    <p style="font-size:20px;">Item # <<items.barcode>></p>
+    
+    
+    <p style="text-align:center">
+      Hold Slip
+    </p>
+
+[% END %]

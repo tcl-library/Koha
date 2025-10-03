@@ -1,0 +1,31 @@
+[% USE date %]
+[% USE KohaDates %]
+[% manip=date.manip %]
+
+<h2>Library item(s) overdue</h2>
+
+<p>The following item(s) are now 7 days overdue as of [% date.format(date.now, "%m-%d-%Y") %]:</p>
+
+[% FOREACH c IN overdues %]
+  <div style="border: 2px solid; padding: 10px; margin-bottom: 15px;">
+    <ul style="list-style-position: inside; margin: 0; padding-left: 15px;">
+      <li><strong>Title:</strong> [% c.item.biblio.title %] [% c.item.biblio.subtitle %]</li>
+      <li><strong>Author:</strong> [% c.item.biblio.author %]</li>
+      <li><strong>Due date:</strong> [% c.item.checkout.date_due | $KohaDates %]</li>
+    </ul>
+  </div>
+[% END %]
+
+<p>Please return your item(s) as soon as possible. We do not charge daily overdue fees, but unreturned items prevent other patrons from accessing them.  
+If you have already returned these items, please disregard this notice.</p>
+
+<p>Thank you,</p>
+<p>This message was sent by:</p>
+<p>[% branch.branchname %]<br /> 
+[% branch.branchaddress1 %]<br /> 
+[% branch.branchcity %], [% branch.branchstate %] [% branch.branchzip %] </p>
+<p>Visit our library's website at: <a href="[% branch.branchurl %]">[% branch.branchurl %]</a></p>
+<p>If you have any questions, please contact us by phone at <strong><ins>[% branch.branchphone %]</ins></strong>.</p>
+<p>Member of the Chinook Library Network</p>
+<br />
+<h6>This notice was generated on [% date.format(date.now, "%m/%d/%Y at %I:%M %p") %]</h6>
