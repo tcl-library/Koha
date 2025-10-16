@@ -5,16 +5,15 @@
 
 [% IF hold.found != 'W' %]
 <p>Deliver To: <br>
-<span style="font-size:30px; font-weight:bold;"> <<branches.branchname>> </span></p>
-</br>
-</br>
+<span style="font-size:30px; font-weight:bold;"> [% branch.branchname %] </span></p>
+<br />
+<br />
   
-<p style="font-size:15px;">Time: <<today>><br>
-    Call Number: <<items.itemcallnumber>> <br>
-    Barcode: <<items.barcode>> </p>
+<p style="font-size:15px;">Time: [% today | $KohaDates %]<br>
+    Call Number: [% item.itemcallnumber %] <br>
+    Barcode: [% item.barcode %] </p>
     
-    <p style="font-size:15px;">Title: <<biblio.title>><<biblio.mid>><br>
-    <<biblio.author>></p>
+    <p style="font-size:15px;">Title: [% biblio.title %][% biblio.medium %][% biblio.author %]</p>
 
 <br>
 <br>
@@ -29,12 +28,12 @@
 
 [% ELSIF hold.found == 'W' && borrower.smsalertnumber || borrower.email %]
 
-<p style="font-size:30px; font-weight:bold;"><<borrowers.surname>><br>
-    <<borrowers.firstname>></p>
+<p style="font-size:30px; font-weight:bold;">[% borrower.surname %]<br>
+    [% borrower.firstname %]</p>
     <br>
     
     <p style="font-size:15px;">Pull Date:<br>
-    <span style="font-size:30px; font-weight:bold;"><<reserves.expirationdate>></span></p>
+    <span style="font-size:30px; font-weight:bold;">[% reserve.expirationdate %]</span></p>
     <br>
     <br>
     

@@ -1,0 +1,207 @@
+[% USE Dumper %]
+[% IF article_request || article_requests %]
+article_requests:<br>
+singular: article_request<br>
+[% Dumper.dump_html(article_request.unblessed) %]<br>
+plural: article_requests<br>
+[% Dumper.dump_html(article_requests.unblessed) %]<br>
+[% END %]
+[% IF basket || baskets %]<br>
+aqbasket:<br>
+singular: basket<br>
+[% Dumper.dump_html(basket.unblessed) %]<br>
+plural: baskets<br>
+[% Dumper.dump_html(baskets.unblessed) %]<br>
+aqbooksellers:<br>
+[% END %]
+[% IF bookseller || booksellers %]<br>
+aqbooksellers:<br>
+singular: bookseller<br>
+[% Dumper.dump_html(bookseller.unblessed) %]<br>
+plural: booksellers<br>
+[% Dumper.dump_html(booksellers.unblessed) %]<br>
+<br>
+[% END %]
+[% IF biblio || biblios %]<br>
+biblio:<br>
+singular: biblio<br>
+[% Dumper.dump_html(biblio.unblessed) %]<br>
+plural: biblios<br>
+[% Dumper.dump_html(biblios.unblessed) %]<br>
+[% END %]
+[% IF biblioitem || biblioitems %]<br>
+biblioitems:<br>
+singular: biblioitem<br>
+[% Dumper.dump_html(biblioitem.unblessed) %]<br>
+plural: biblioitems<br>
+[% Dumper.dump_html(biblioitems.unblessed) %]<br>
+<br>
+[% END %]
+[% IF borrower || borrowers %]<br>
+borrowers:<br>
+singular: borrower<br>
+[% Dumper.dump_html(borrower.unblessed) %]<br>
+plural: borrowers<br>
+[% Dumper.dump_html(borrowers.unblessed) %]<br>
+<br>
+[% END %]
+[% IF branch || branches %]<br>
+branches:<br>
+singular: branch<br>
+[% Dumper.dump_html(branch.unblessed) %]<br>
+plural: branches<br>
+[% Dumper.dump_html(branches.unblessed) %]<br>
+<br>
+[% END %]
+[% IF credit || credits %]<br>
+credits:<br>
+singular: credit<br>
+[% Dumper.dump_html(credit.unblessed) %]<br>
+plural: credits<br>
+[% Dumper.dump_html(credits.unblessed) %]<br>
+<br>
+[% END %]
+[% IF debit || debits %]<br>
+debits:<br>
+singular: debit<br>
+[% Dumper.dump_html(debit.unblessed) %]<br>
+plural: debits<br>
+[% Dumper.dump_html(debits.unblessed) %]<br>
+<br>
+[% END %]
+[% IF item || items %]<br>
+items:<br>
+singular: item<br>
+[% Dumper.dump_html(item.unblessed) %]<br>
+plural: items<br>
+[% Dumper.dump_html(items.unblessed) %]<br>
+<br>
+[% END %]
+[% IF additional_content || additional_contents %]<br>
+additional_contents:<br>
+singular: additional_content<br>
+[% Dumper.dump_html(additional_content.unblessed) %]<br>
+plural: additional_contents<br>
+[% Dumper.dump_html(additional_contents.unblessed) %]<br>
+<br>
+[% END %]
+[% IF news || news %]<br>
+opac_news:<br>
+singular: news<br>
+[% Dumper.dump_html(news.unblessed) %]<br>
+plural: news<br>
+[% Dumper.dump_html(news.unblessed) %]<br>
+<br>
+[% END %]
+[% IF order || orders %]<br>
+aqorders:<br>
+singular: order<br>
+[% Dumper.dump_html(order.unblessed) %]<br>
+plural: orders<br>
+[% Dumper.dump_html(orders.unblessed) %]<br>
+<br>
+[% END %]
+[% IF hold || holds %]<br>
+reserves:<br>
+singular: hold<br>
+[% Dumper.dump_html(hold.unblessed) %]<br>
+plural: holds<br>
+[% Dumper.dump_html(holds.unblessed) %]<br>
+<br>
+[% END %]
+[% IF serial || serials %]<br>
+serial:<br>
+singular: serial<br>
+[% Dumper.dump_html(serial.unblessed) %]<br>
+plural: serials<br>
+[% Dumper.dump_html(serials.unblessed) %]<br>
+<br>
+[% END %]
+[% IF subscription || subscriptions %]<br>
+subscription:<br>
+singular: subscription<br>
+[% Dumper.dump_html(subscription.unblessed) %]<br>
+plural: subscriptions<br>
+[% Dumper.dump_html(subscriptions.unblessed) %]<br>
+<br>
+
+[% END %]
+[% IF suggestion || suggestions %]<br>
+suggestions:<br>
+singular: suggestion<br>
+[% Dumper.dump_html(suggestion.unblessed) %]<br>
+plural: suggestions<br>
+[% Dumper.dump_html(suggestions.unblessed) %]<br>
+<br>
+[% END %]
+[% IF ticket || tickets %]<br>
+tickets:<br>
+singular: ticket<br>
+[% Dumper.dump_html(ticket.unblessed) %]<br>
+plural: tickets<br>
+[% Dumper.dump_html(tickets.unblessed) %]<br>
+<br>
+[% END %]
+[% IF ticket_update || ticket_updates %]<br>
+ticket_updates:<br>
+singular: ticket_update<br>
+[% Dumper.dump_html(ticket_update.unblessed) %]<br>
+plural: ticket_updates<br>
+[% Dumper.dump_html(ticket_updates.unblessed) %]<br>
+<br>
+[% END %]
+[% IF checkout || checkouts %]<br>
+issues:<br>
+singular: checkout<br>
+[% Dumper.dump_html(checkout.unblessed) %]<br>
+plural: checkouts<br>
+[% Dumper.dump_html(checkouts.unblessed) %]<br>
+<br>
+[% END %]
+[% IF old_checkout || old_checkouts %]<br>
+old_issues:<br>
+singular: old_checkout<br>
+[% Dumper.dump_html(old_checkout.unblessed) %]<br>
+plural: old_checkouts<br>
+[% Dumper.dump_html(old_checkouts.unblessed) %]<br>
+<br>
+[% END %]
+[% IF overdue || overdues %]<br>
+overdues:<br>
+singular: overdue<br>
+[% Dumper.dump_html(overdue.unblessed) %]<br>
+plural: overdues<br>
+[% Dumper.dump_html(overdues.unblessed) %]<br>
+<br>
+[% END %]
+[% IF patron_modification || patron_modifications %]<br>
+borrower_modifications:<br>
+singular: patron_modification<br>
+[% Dumper.dump_html(patron_modification.unblessed) %]<br>
+plural: patron_modifications<br>
+[% Dumper.dump_html(patron_modifications.unblessed) %]<br>
+<br>
+[% END %]
+[% IF illrequest || illrequests %]<br>
+illrequests:<br>
+singular: illrequest<br>
+[% Dumper.dump_html(illrequest.unblessed) %]<br>
+plural: illrequests<br>
+[% Dumper.dump_html(illrequests.unblessed) %]<br>
+<br>
+[% END %]
+[% IF train_item || train_items %]<br>
+preservation_train_items:<br>
+singular: train_item<br>
+[% Dumper.dump_html(train_item.unblessed) %]<br>
+plural: train_items<br>
+[% Dumper.dump_html(train_items.unblessed) %]<br>
+<br>
+[% END %]
+[% IF problemreport || problemreports %]<br>
+problem_reports:<br>
+singular: problemreport<br>
+[% Dumper.dump_html(problemreport.unblessed) %]<br>
+plural: problemreports<br>
+[% Dumper.dump_html(problemreports.unblessed) %]<br>
+[% END %]

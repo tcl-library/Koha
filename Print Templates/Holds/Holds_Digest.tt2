@@ -3,7 +3,7 @@
 
 <h2>Requested Library Items Available for Pickup</h2>
 
-<p>Hi [% borrower.firstname %] [% borrower.lastname %],</p>
+<p>Hi [% borrower.firstname %] [% borrower.surname %],</p>
 
 <p>The following requested items are available to pickup at the library as of [% date.format(date.now, "%m-%d-%Y") %].</p>
 
