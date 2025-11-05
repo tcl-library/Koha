@@ -105,7 +105,7 @@ $(document).ready(function () {
 });
 
 
-/*Update checkin button link but only for DW, NP, & TILL Libraries*/
+/*Update checkin button link but only for Driftwood, Newport, Toledo, & Tillamook Libraries*/
 
 $(function () {
   const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
