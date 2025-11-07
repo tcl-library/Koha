@@ -12,7 +12,7 @@ JOIN
     itemtypes ON items.itype = itemtypes.itemtype
 WHERE 
     items.location = 'ASKATDESK'
-    AND statistics.branch IN ('TILLMAIN', 'TILLBAY', 'TILLGAR', 'TILLROCK', 'TILLMANZ', 'TILLPAC', 'TILLBKM', 'TILLOUT')
+    AND statistics.branch LIKE 'TILL%'
     AND statistics.type IN ('issue', 'renew')
     AND statistics.datetime BETWEEN <<Start date|date>> AND <<End date|date>>
 GROUP BY 
