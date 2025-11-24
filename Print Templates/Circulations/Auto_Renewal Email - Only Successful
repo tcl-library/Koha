@@ -1,0 +1,21 @@
+[%- IF success %]
+[% USE KohaDates %]
+[% USE date %]
+<html>
+<body>
+     <p>Dear [% borrower.firstname %] [% borrower.surname %],</p>
+        <p><strong>The following library materials have been renewed automatically:</strong></p>
+        [%- FOREACH checkout IN checkouts %]
+            [%- IF !checkout.auto_renew_error || checkout.auto_renew_error == "auto_renew_final"  %]
+            <div class="successful">
+                <strong>Title:</strong> [% checkout.item.biblio.title %] [% IF checkout.item.biblio.subtitle %][% checkout.item.biblio.subtitle %][% END %]<br/>
+                <strong>Barcode:</strong>  [% checkout.item.barcode %]<br/>
+                <strong>Due date:</strong>  [% checkout.date_due | $KohaDates as_due_date => 1%]<br/>
+            </div>
+            <br />
+            [%- END %]
+        [%- END -%]
+
+</html>
+</body>
+[%- END %]
