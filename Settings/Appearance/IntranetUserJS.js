@@ -106,7 +106,6 @@ $(document).ready(function () {
 
 
 /*Update checkin button link but only for Driftwood, Newport, Toledo, & Tillamook Libraries*/
-
 $(function () {
   const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
 
@@ -120,5 +119,19 @@ $(function () {
     $checkinLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/circ/returns.pl');
     $checkinLink.attr('data-bs-target', null);
     $checkinLink.removeAttr('data-bs-toggle');
+  }  
+});
+
+/*Update renew button link but only for Newport Library*/
+$(function () {
+  const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
+
+  if (
+    branch === 'NEWPORT'
+  ) {
+    const $renewLink = $('#renew_search-tab');
+    $renewLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/circ/renew.pl');
+    $renewLink.attr('data-bs-target', null);
+    $renewLink.removeAttr('data-bs-toggle');
   }
 });
