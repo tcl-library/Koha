@@ -1,0 +1,72 @@
+[% IF success %]
+[% USE KohaDates %]
+[% USE date %]
+<html>
+<body>
+    [%- IF borrower %]
+    <p>Dear [% borrower.firstname %] [% borrower.surname %],</p>
+    [%- ELSE %]
+    <p>Dear Patron,</p>
+    [%- END %]
+    
+    <p><strong>The following library materials have been renewed automatically:</strong></p>
+    
+    [%- IF checkouts && checkouts.size > 0 %]
+        [%- FOREACH checkout IN checkouts %]
+            [%- IF !checkout.auto_renew_error || checkout.auto_renew_error == "auto_renew_final" %]
+            <div class="successful">
+                <strong>Title:</strong> 
+                [%- IF checkout.item && checkout.item.biblio %]
+                    [% checkout.item.biblio.title %] 
+                    [%- IF checkout.item.biblio.subtitle %] 
+                        [% checkout.item.biblio.subtitle %]
+                    [%- END %]
+                [%- ELSE %]
+                    Unknown Title
+                [%- END %]
+                <br/>
+                <strong>Barcode:</strong>  
+                [%- IF checkout.item %]
+                    [% checkout.item.barcode %]
+                [%- ELSE %]
+                    Unknown
+                [%- END %]
+                <br/>
+                <strong>Due date:</strong>  
+                [%- IF checkout.date_due %]
+                    [% checkout.date_due | $KohaDates as_due_date => 1 %]
+                [%- ELSE %]
+                    Unknown
+                [%- END %]
+                <br/>
+            </div>
+            <br />
+            [%- END %]
+        [%- END %]
+    [%- ELSE %]
+        <p>No renewals were processed.</p>
+    [%- END %]
+
+    [%- # Add section for failed renewals if needed %]
+    [%- IF has_failed_renewals %]
+        <p><strong>The following items could not be renewed:</strong></p>
+        [%- FOREACH checkout IN checkouts %]
+            [%- IF checkout.auto_renew_error && checkout.auto_renew_error != "auto_renew_final" %]
+            <div class="failed">
+                <strong>Title:</strong> 
+                [%- IF checkout.item && checkout.item.biblio %]
+                    [% checkout.item.biblio.title %]
+                [%- ELSE %]
+                    Unknown Title
+                [%- END %]
+                <br/>
+                <strong>Reason:</strong> [% checkout.auto_renew_error %]<br/>
+            </div>
+            <br />
+            [%- END %]
+        [%- END %]
+    [%- END %]
+
+</body>
+</html>
+[% END %]
