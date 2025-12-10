@@ -106,6 +106,7 @@ $(document).ready(function () {
 
 
 /*Update checkin button link but only for Driftwood, Newport, Toledo, & Tillamook Libraries*/
+
 $(function () {
   const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
 
@@ -119,8 +120,9 @@ $(function () {
     $checkinLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/circ/returns.pl');
     $checkinLink.attr('data-bs-target', null);
     $checkinLink.removeAttr('data-bs-toggle');
-  }  
+  }
 });
+
 
 /*Update renew button link but only for Newport Library*/
 $(function () {
@@ -133,5 +135,48 @@ $(function () {
     $renewLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/circ/renew.pl');
     $renewLink.attr('data-bs-target', null);
     $renewLink.removeAttr('data-bs-toggle');
+  }
+});
+
+/*Update check out button link but only for Newport & Tillamook Library*/
+$(function () {
+  const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
+
+  if (
+    branch === 'NEWPORT' ||
+    branch.startsWith('TILL')
+  ) {
+    const $checkoutLink = $('#circ_search-tab');
+    $checkoutLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/circ/circulation.pl');
+    $checkoutLink.attr('data-bs-target', null);
+    $checkoutLink.removeAttr('data-bs-toggle');
+  }
+});
+
+/*Update patron search button link but only for Newport Library*/
+$(function () {
+  const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
+
+  if (
+    branch === 'NEWPORT'
+  ) {
+    const $patronLink = $('#patron_search-tab');
+    $patronLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/members/members-home.pl');
+    $patronLink.attr('data-bs-target', null);
+    $patronLink.removeAttr('data-bs-toggle');
+  }
+});
+
+/*Update catalog search button link but only for Newport Library*/
+$(function () {
+  const branch = $('.logged-in-branch-code').data('logged-in-branch-code');
+
+  if (
+    branch === 'NEWPORT'
+  ) {
+    const $catalogLink = $('#catalog_search-tab');
+    $catalogLink.attr('href', 'https://staff.lcld.bywatersolutions.com/cgi-bin/koha/catalogue/search.pl');
+    $catalogLink.attr('data-bs-target', null);
+    $catalogLink.removeAttr('data-bs-toggle');
   }
 });
